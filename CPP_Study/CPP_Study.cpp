@@ -180,6 +180,5 @@ int main()
     // 1)전처리 2)컴파일 3)링크
     //Define을 자주 이용 X enum 또는 const사용
 #pragma endregion
-
 }
  
