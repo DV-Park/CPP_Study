@@ -180,5 +180,42 @@ int main()
     // 1)전처리 2)컴파일 3)링크
     //Define을 자주 이용 X enum 또는 const사용
 #pragma endregion
+
+#pragma region 포인터 vs 참조
+//void PrintInfo(const StatInfo& info); 처럼 사용하면 좋음(참조인데 내부에서 수정 불가)
+// 참조와 포인터는 성능 동일
+// But 참조가 편리
+
+//포인터의 별 뒤에 const와 별 앞 const의 차이
+// 별 뒤에 붙이면
+// info라는 바구니의 내용물(주소)를 바꿀 수 없음
+// info는 주소값을 갖는 바구니 -> 이 주소값이 고정이다
+
+// 별 앞에 붙이면
+// info가 가리키고 있는 바구니의 내용물 수정 불가
+// '원격' 바구니의 내용물을 바꿀 수 없음
+
+// 참조는 변수의 2번째 이름(별칭)
+// 참조하는 대상이 없으면 안됨
+
+// 포인터는 어떤~ 주소라는 의미
+// 대상이 실존하지 않을 수도 있음
+// 없다는 의미로 nullptr 사용
+// StatInfo* ptr = nullptr;
+
+// 결론은 team by team
+// 루키스의 선호 스타일
+// 없는 경우도 고려해야한다면 포인터(nullptr 체크 필수)
+// 바뀌지 않고 readonly라면 const ref&
+// 그외 일반적으로 ref (명시적으로 호출할때 out 사용)
+// 다른 사람이 pointer로 만들어 두면 계속 포인터 사용
+// #define OUT (아무것도 안들어있음)
+// void ChangeInfo(Out StatInfo& info);
+// ChageInfo(Out info);
+
+// 보너스) 포인터를 참조로 참조를 포인터로 넘길려면
+// *pointer , &reference
+
+#pragma endregion
 }
  
