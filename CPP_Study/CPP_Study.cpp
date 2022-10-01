@@ -103,7 +103,6 @@ int main()
 
 #pragma endregion
 
-
 #pragma region 가위 바위 보
     //srand(time(0));
 
@@ -216,6 +215,59 @@ int main()
 // 보너스) 포인터를 참조로 참조를 포인터로 넘길려면
 // *pointer , &reference
 
+#pragma endregion
+#pragma region 배열과 포인터
+// 정확하게 시작 위치를 가리키는 배열은 TYPE* 포인터
+// int numbers[5]={}; 배열의 초기화(0으로 초기화)
+// int numbers[5]={1,2,3}; 1,2,3을 제외한 나머지 배열 초기화(0으로 초기화)
+// int numbers[]={1,2,3}; 데이터 개수에 맞게 배열의 크기 설정
+
+// const char* test1 = "Hello World"; ReadOnly data
+// char test2 = "Hello World";
+
+// 다중포인터
+// const char* str = "Hello World";
+// const char** ptr = &str;
+// *ptr= "bye";
+// cout<<str<<endl; -> bye 출력
+
+// 다중배열을 포인터로 사용하기
+// int arr2[2][2] = {{1,2},{3,4}};
+// int(*p2)[2] = arr2;
+// (*p2)[0], (*p2)[1] -> 1,2
+// (*(p2+1))[0], (*(p2+1))[0] -> 3,4
+// p2[0][], p2[0][1], p2[1][0], p2[1][1]
+#pragma endregion
+
+#pragma region 객체지향프로그래밍
+// 복사 생성자 (자기자신의 클래스 참조 타입을 인자로 받음) -> 정의 해주지 않아도 Default로 생성(모든 멤버변수 복사)
+// Knight(const Knight& knight){}
+// explicit Knight(){} 를 사용 -> 명시적으로만 생성자를 사용하라
+// Knight k1; k1 = 1; //오류
+// k1 = (Knight)1;
+
+// 상속
+// 부모와 자식모두 생성자, 소멸자가 있을 시 순서
+// 부모생성자 -> 자식생성자 -> 자식소멸자 -> 부모소멸자
+
+// RPG내에서 계층구조로 활용
+// GameObject
+// - Creature
+// -- NPC, Player, Monster, Pet
+// - Projectile
+// -- Arrow, Fireball
+// - Env
+
+// Item
+// - Weapon
+// -- Sword, Bow
+// - Armor
+// -- Helmet, Boots, Armor
+// - Consumable
+// -- Potion, Scroll
+
+// 은닉
+//
 #pragma endregion
 }
  
