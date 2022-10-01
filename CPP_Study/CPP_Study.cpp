@@ -239,7 +239,7 @@ int main()
 // p2[0][], p2[0][1], p2[1][0], p2[1][1]
 #pragma endregion
 
-#pragma region 객체지향프로그래밍
+#pragma region 객체지향
 // 복사 생성자 (자기자신의 클래스 참조 타입을 인자로 받음) -> 정의 해주지 않아도 Default로 생성(모든 멤버변수 복사)
 // Knight(const Knight& knight){}
 // explicit Knight(){} 를 사용 -> 명시적으로만 생성자를 사용하라
@@ -266,8 +266,49 @@ int main()
 // - Consumable
 // -- Potion, Scroll
 
+
 // 은닉
-//
+// - public : public->public, protected->protected
+// - protected : public->protected, protected->protected
+// - private : public->private, protected->private
+// class SuperCar : private Car
+// class TestSuperCar : SuperCar -> Car는 사용불가
+
+
+// 다형
+// - 오버로딩 : 함수중복정의 -> 함수 이름의 재사용
+// - 오버라이딩 : 함수 재정의 -> 부모클래스의 함수를 자식클래스에서 재정의
+
+// 바인딩
+// 일반함수는 정적 바인딩 사용
+// 동적 바인딩 -> 가상 함수 사용
+// 한번 가상 함수는 재정의를 하더라도 가상함수
+// void MovePlayer(Player* player){ player->Move(); }
+// MovePlayer(Knight); -> 가능
+// MovePlayer 내부에 Move() 는 Player class의 멤버함수 호출 but, 가상함수 일 시, Knight class의 멤버함수 호출
+
+// 실체 객체가 어떤 타입인지 어떻게 알고 알아서 가상함수를 호출했을까?
+// - 가상함수 테이블(vftable)
+// 이 함수를 호출 할 때는 컴파일 타임에 타입을 결정하지 말고 런타임에 결정해(동적바인딩)
+
+// .vftable [] 4바이트(32) 8바이트(64)
+// [VMove][VDie]
+
+// 순수 가상 함수 : 구현은 없고 '인터페이스'만 전달하는 용도로 사용
+// virtual void VAttack()=0; 과 같은 형태
+// 자식 클래스에서 강제로 내부를 구현해야함
+// 순수 가상 함수가 하나 이상이 있으면 그 클래스는 추상클래스
+// - 직접적인 객체를 만들 수 없음
+
+// 업캐스팅을 통해 자식 클래스들을 관리하기 편함
+// std::list<CParent*> ObjList;
+// CParent* child1 = new CChild1;  // Upcasting(CChild1 -> CParent)
+// CParent* child2 = new CChild2;  // Upcasting(CChild2 -> CParent)
+// CParent* child3 = new CChild3;  // Upcasting(CChild3 -> CParent)
+// ObjList.push_back(child1);
+// ObjList.push_back(child2);
+// ObjList.push_back(child3);
+
 #pragma endregion
 }
  
