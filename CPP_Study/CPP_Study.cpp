@@ -310,5 +310,56 @@ int main()
 // ObjList.push_back(child3);
 
 #pragma endregion
+
+#pragma region 객체지향 초기화리스트
+// 맴버 변수의 초기화
+// 1. 생성자
+// 2. 초기화 리스트
+// 3. C++11(Modern C++) 문법
+
+//초기화 리스트
+// - 상속 관게에서 원하는 부모 생성자를 호출할 때 필요.
+// - 생성자 내에서 초기화 vs 초기화 리스트
+// -- 일반 변수는 별 차이 X
+// -- 맴버 타입이 클래스인 경우 차이가 난다
+// -- 정의함과 동시에 초기화가 필요한 경우 (참조 타입, Const 타입)
+
+//class Inventory {
+//public:
+//    Inventory() {}
+//    Inventory(int n) {}
+//    ~Inventory() {}
+//};
+
+//class Player
+//{
+//public:
+//    Player() {}
+//    Player(int id) {}
+//};
+//
+//class Knight : public Player {
+//public:
+//    Knight() : Player(1), _hp(100), _Inventory(20), _hpRef(_hp), _hpConst(100) //**초기화리스트 - 선처리영역에서 호출 (생성자 소멸자 한번)
+// Player(1) 선처리 영역
+// _Inventory = Inventory() 선처리 영역
+//   {
+//        _hp = 100;
+//        _Inventory=Inventory(20); //이렇게 초기화하면 생성자 두번 호출 (소멸자도 두번 호출) - 선처리영역에서 생성 후 생성자 내부에서 한번더 덮어쓰기 생성(소멸자 호출)
+//        
+//        _hpRef = _hp //불가
+//        _hpConst = 100 //불가
+//    }
+//public:
+//    int _hp;
+//    Inventory _Inventory; //포함관계에선 멤버 변수로 들고 있음
+// 
+//    int& _hpRef = _hp;    // C++11
+//    const int _hpConst = 100;     // C++11
+//};
+
+// **Is-A(Knight Is-A Player?) OK -> 상속관계
+// **Has-A(Knight Has-A Inventory?) OK -> 포함관계
+#pragma endregion
 }
  
