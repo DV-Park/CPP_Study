@@ -394,7 +394,30 @@ int main()
 //      ret._y = b._y + a;
 //      return ret;
 //}
+#pragma endregion
 
+#pragma region 객체지향 마무리
+// static 변수, static 함수 (static은 일종의 전역함수 클래스 매개변수 수정 x)
+// 딱 하나만 존재해야 할 때, ex 각 마린의 공격력은 똑같음
+// 
+// class Marin{
+// 
+// (특정 마린 객체에 종속)
+// int _hp;
+// 
+// (특정 마린 객체와 무관 클래스 자체와 연관)
+// static int s_attack; (설계도 상에서만 존재)
+// }
+// int main(){
+// Marin m1;
+// m1._hp = 35;
+// Marin::s_attack = 6;
+// }
+
+// 일반 함수에서 static 변수
+// 생명주기 : 프로그램 시작/종료
+// 가시범위 : 함수 내부
+// 정적 지역 객체로 가용 가능!
 #pragma endregion
 }
- 
+  
